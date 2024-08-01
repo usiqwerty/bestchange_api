@@ -2,7 +2,7 @@ import os
 import platform
 
 
-def creation_date(path_to_file):
+def creation_date(path_to_file: str) -> float | int:
     """
     Try to get the date that a file was created, falling back to when it was
     last modified if that isn't possible.

@@ -1,4 +1,6 @@
 class Rates:
+    __data: list[dict]
+
     def __init__(self, text, split_reviews):
         self.__data = []
         for row in text.splitlines():
@@ -20,9 +22,10 @@ class Rates:
                 pass
 
     def get(self):
+        """Возвращает данные"""
         return self.__data
 
-    def filter(self, give_id, get_id):
+    def filter(self, give_id: int, get_id: int):
         data = []
         for val in self.__data:
             if val['give_id'] == give_id and val['get_id'] == get_id:

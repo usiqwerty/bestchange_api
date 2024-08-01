@@ -2,13 +2,16 @@ from itertools import groupby
 
 
 class Common:
+    data: dict[int, dict] | list
+
     def __init__(self):
         self.data = {}
 
     def get(self):
+        """Получить данные"""
         return self.data
 
-    def get_by_id(self, id, only_name=True):
+    def get_by_id(self, id: int, only_name=True):
         if id not in self.data:
             return False
 
@@ -66,7 +69,9 @@ class Cities(Common):
 
 
 class Top(Common):
-    def __init__(self, text):
+    data: list[dict]
+
+    def __init__(self, text: str):
         super().__init__()
         self.data = []
         for row in text.splitlines():

@@ -6,7 +6,7 @@ from urllib.request import ProxyHandler, build_opener, install_opener, urlretrie
 from zipfile import ZipFile
 
 from bestchange_api.tools import creation_date
-from bestchange_api.columns import Currencies, Exchangers, Cities, Top
+from bestchange_api.list_types import Currencies, Exchangers, Cities, Top
 from bestchange_api.rates import Rates
 
 
@@ -69,7 +69,8 @@ class BestChange:
         if load:
             self.load()
 
-    def load(self):
+    def load(self) -> None:
+        """Загрузить данные через API"""
         try:
             if os.path.isfile(self.__cache_path) \
                     and time.time() - creation_date(self.__cache_path) < self.__cache_seconds:
